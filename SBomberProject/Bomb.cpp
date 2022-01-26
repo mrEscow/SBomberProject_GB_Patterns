@@ -3,10 +3,8 @@
 
 #include "Bomb.h"
 #include "ScreenSingletone.h"
-#include "MyTools.h"
 
 using namespace std;
-using namespace MyTools;
 
 void Bomb::Draw() const
 {

@@ -2,11 +2,9 @@
 #include <iostream>
 
 #include "Tank.h"
-#include "MyTools.h"
 #include "ScreenSingletone.h"
 
 using namespace std;
-using namespace MyTools;
 
 bool Tank::isInside(double x1, double x2) const
 {

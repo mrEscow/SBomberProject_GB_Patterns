@@ -1,11 +1,9 @@
 #include <iostream>
 
-#include "MyTools.h"
 #include "Ground.h"
 #include "ScreenSingletone.h"
 
 using namespace std;
-using namespace MyTools;
 
 //==================================================================================================
 

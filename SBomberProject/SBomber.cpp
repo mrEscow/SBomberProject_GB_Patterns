@@ -2,7 +2,6 @@
 #include <conio.h>
 #include <windows.h>
 
-#include "MyTools.h"
 #include "SBomber.h"
 #include "Bomb.h"
 #include "Ground.h"
@@ -12,7 +11,6 @@
 #include "FileLoggerSingletone.h"
 
 using namespace std;
-using namespace MyTools;
 
 SBomber::SBomber()
     : exitFlag(false),

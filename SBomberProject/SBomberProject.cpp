@@ -4,7 +4,6 @@
 #include "SBomber.h"
 #include "ScreenSingletone.h"
 #include "FileLoggerSingletone.h"
-#include "MyTools.h"
 
 using namespace std;
 

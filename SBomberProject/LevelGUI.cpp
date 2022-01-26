@@ -2,10 +2,8 @@
 
 #include "LevelGUI.h"
 #include "ScreenSingletone.h"
-#include "MyTools.h"
 
 using namespace std;
-using namespace MyTools;
 
 void LevelGUI::Draw() const
 {
