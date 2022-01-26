@@ -2,6 +2,7 @@
 #include <conio.h>
 
 #include "SBomber.h"
+#include "ScreenSingletone.h"
 #include "MyTools.h"
 
 using namespace std;
@@ -22,7 +23,7 @@ int main(void)
             game.ProcessKBHit();
         }
 
-        MyTools::ClrScr();
+        ScreenSingleton::getInstance().ClrScr();
 
         game.DrawFrame();
         game.MoveObjects();
