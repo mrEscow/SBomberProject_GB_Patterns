@@ -144,10 +144,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bomb.cpp" />
-    <ClCompile Include="FileLoggerSingletone.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="House.cpp" />
     <ClCompile Include="LevelGUI.cpp" />
+    <ClCompile Include="LoggerSingleton.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="SBomber.cpp" />
     <ClCompile Include="SBomberProject.cpp" />
@@ -156,13 +156,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bomb.h" />
-    <ClInclude Include="FileLoggerSingletone.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="DynamicObject.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="DestroyableGroundObject.h" />
     <ClInclude Include="House.h" />
     <ClInclude Include="LevelGUI.h" />
+    <ClInclude Include="LoggerSingleton.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="SBomber.h" />
     <ClInclude Include="ScreenSingletone.h" />

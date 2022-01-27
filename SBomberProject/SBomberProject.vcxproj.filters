@@ -42,7 +42,7 @@
     <ClCompile Include="ScreenSingletone.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="FileLoggerSingletone.cpp">
+    <ClCompile Include="LoggerSingleton.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,7 +80,7 @@
     <ClInclude Include="ScreenSingletone.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="FileLoggerSingletone.h">
+    <ClInclude Include="LoggerSingleton.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

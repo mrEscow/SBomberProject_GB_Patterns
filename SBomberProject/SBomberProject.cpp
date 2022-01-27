@@ -3,7 +3,7 @@
 
 #include "SBomber.h"
 #include "ScreenSingletone.h"
-#include "FileLoggerSingletone.h"
+#include "LoggerSingleton.h"
 
 using namespace std;
 
@@ -11,9 +11,12 @@ using namespace std;
 
 int main(void)
 {
-    FileLoggerSingletone::getInstance().OpenLogFile("log.txt");
+    LoggerSingleton* FileLogger = &FileLoggerSingletone::getInstance();
+    LoggerSingleton* ProxyLogger = &ProxyLoggerSingletone::getInstance();
 
-    SBomber game;
+    ProxyLogger->OpenLogFile("log.txt");
+
+    SBomber game(ProxyLogger);
 
     do {
         game.TimeStart();

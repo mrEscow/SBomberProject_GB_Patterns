@@ -7,12 +7,13 @@
 #include "Bomb.h"
 #include "Ground.h"
 #include "Tank.h"
+#include "LoggerSingleton.h"
 
 class SBomber
 {
 public:
 
-    SBomber();
+    SBomber(LoggerSingleton* Logger);
     ~SBomber();
     
     inline bool GetExitFlag() const { return exitFlag; }
@@ -26,6 +27,8 @@ public:
     void CheckObjects();
 
 private:
+
+    LoggerSingleton* ptrLogger;
 
     void CheckPlaneAndLevelGUI();
     void CheckBombsAndGround();
