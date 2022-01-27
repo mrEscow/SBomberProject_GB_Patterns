@@ -36,7 +36,8 @@ int main(void)
 
     } while (!game.GetExitFlag());
 
-    FileLoggerSingletone::getInstance().CloseLogFile();
+
+    ProxyLogger->CloseLogFile();
 
     return 0;
 }
