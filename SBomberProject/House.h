@@ -14,8 +14,12 @@ public:
 
 	void Draw() const override;
 
-private:
+protected:
 
 	const uint16_t score = 40;
 };
 
+class WinterHouse : public House
+{
+	void Draw() const override;
+};

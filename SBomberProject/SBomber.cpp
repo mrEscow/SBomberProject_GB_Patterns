@@ -42,26 +42,29 @@ SBomber::SBomber()
     pGUI->SetFinishX(offset + width - 4);
     vecStaticObj.push_back(pGUI);
 
-    Ground* pGr = new Ground;
-    const uint16_t groundY = maxY - 5;
-    pGr->SetPos(offset + 1, groundY);
-    pGr->SetWidth(width - 2);
-    vecStaticObj.push_back(pGr);
+    pFactory = new WinterFactory;
+    pFactory->CreateLevel1(vecStaticObj);
 
-    Tank* pTank = new Tank;
-    pTank->SetWidth(13);
-    pTank->SetPos(30, groundY - 1);
-    vecStaticObj.push_back(pTank);
+    //Ground* pGr = new Ground;
+    //const uint16_t groundY = maxY - 5;
+    //pGr->SetPos(offset + 1, groundY);
+    //pGr->SetWidth(width - 2);
+    //vecStaticObj.push_back(pGr);
 
-    pTank = new Tank;
-    pTank->SetWidth(13);
-    pTank->SetPos(50, groundY - 1);
-    vecStaticObj.push_back(pTank);
+    //Tank* pTank = new Tank;
+    //pTank->SetWidth(13);
+    //pTank->SetPos(30, groundY - 1);
+    //vecStaticObj.push_back(pTank);
 
-    House * pHouse = new House;
-    pHouse->SetWidth(13);
-    pHouse->SetPos(80, groundY - 1);
-    vecStaticObj.push_back(pHouse);
+    //pTank = new Tank;
+    //pTank->SetWidth(13);
+    //pTank->SetPos(50, groundY - 1);
+    //vecStaticObj.push_back(pTank);
+
+    //House * pHouse = new House;
+    //pHouse->SetWidth(13);
+    //pHouse->SetPos(80, groundY - 1);
+    //vecStaticObj.push_back(pHouse);
 
     /*
     Bomb* pBomb = new Bomb;
@@ -90,6 +93,8 @@ SBomber::~SBomber()
             delete vecStaticObj[i];
         }
     }
+
+    delete pFactory;
 }
 
 void SBomber::MoveObjects()

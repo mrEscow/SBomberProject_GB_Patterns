@@ -37,10 +37,14 @@ public:
 
 	void __fastcall AddCrater(double xn);
 
-private:
+protected:
 
 	bool __fastcall isInsideAnyCrater(double x) const;
 
 	std::vector<Crater> vecCrates;
 };
 
+class WinterGround : public Ground
+{
+	void Draw() const override;
+};

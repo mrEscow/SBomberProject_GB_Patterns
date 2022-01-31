@@ -8,6 +8,8 @@
 #include "Ground.h"
 #include "Tank.h"
 
+#include "SeasonalFactory.h"
+
 class SBomber
 {
 public:
@@ -26,6 +28,8 @@ public:
     void CheckObjects();
 
 private:
+
+    ISeasonalFactory* pFactory;
 
     void CheckPlaneAndLevelGUI();
     void CheckBombsAndGround();
