@@ -7,6 +7,7 @@
 #include "Bomb.h"
 #include "Ground.h"
 
+
 /**
  * Паттерн Команда
  *
@@ -86,49 +87,51 @@ public:
 		return true;
 	}
 };
-/**
- * Но есть и команды, которые делегируют более сложные операции другим объектам,
- * называемым «получателями».
- */
+
 class DropBomb : public AbstractCommand
 {
 private:
 	//SBomber* receiver_;
 	const Plane* pPlane_;
 	std::vector<DynamicObject*>& vecDynamicObj_;
-	mutable  uint16_t* bombsNumber_;
+	mutable  uint16_t* pbombsNumber_;
+	double speed_;
+	CraterSize eCraterSize_;
 public:
 	DropBomb(
 		const Plane* plane, 
 		std::vector<DynamicObject*>& vecDynamicObj,
-		uint16_t* bombsNumber
+		uint16_t* bombsNumber,
+		double speed = 2,
+		CraterSize CraterSize = SMALL_CRATER_SIZE
 	)
 		: 
 		vecDynamicObj_(vecDynamicObj),
 		pPlane_(plane),
-		bombsNumber_(bombsNumber)
+		pbombsNumber_(bombsNumber),
+		speed_(speed),
+		eCraterSize_(CraterSize)
 	{}
 
 	virtual bool Execute() const override {
-		if (*bombsNumber_ > 0)
+		if (*pbombsNumber_ > 0)
 		{
 			FileLoggerSingletone::getInstance().WriteToLog(std::string(__FUNCTION__) + " was invoked");
 
-			//Plane* pPlane = FindPlane();
 			double x = pPlane_->GetX() + 4;
 			double y = pPlane_->GetY() + 2;
 
 			Bomb* pBomb = new Bomb;
 			pBomb->SetDirection(0.3, 1);
-			pBomb->SetSpeed(2);
+			pBomb->SetSpeed(speed_);
 			pBomb->SetPos(x, y);
 			pBomb->SetWidth(SMALL_CRATER_SIZE);
 
 			vecDynamicObj_.push_back(pBomb);
 
 			
-			if (bombsNumber_)
-				(*bombsNumber_)--;
+			if (pbombsNumber_)
+				(*pbombsNumber_)--;
 
 			return true;
 		}
