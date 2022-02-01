@@ -17,6 +17,7 @@ void Bomb::Draw() const
 void BombDecorator::Move(uint16_t time)
 {
     bomb.Move(time * 1.6);
+    //cerr << bomb.GetX() << "  " << bomb.GetY() << endl;
 }
 
 void BombDecorator::Draw() const
