@@ -90,7 +90,7 @@ public:
 
 class DropBomb : public AbstractCommand
 {
-private:
+protected:
 	//SBomber* receiver_;
 	const Plane* pPlane_;
 	std::vector<DynamicObject*>& vecDynamicObj_;
@@ -103,14 +103,14 @@ public:
 		std::vector<DynamicObject*>& vecDynamicObj,
 		uint16_t* bombsNumber,
 		double speed = 2,
-		CraterSize CraterSize = SMALL_CRATER_SIZE
+		CraterSize craterSize = SMALL_CRATER_SIZE
 	)
 		: 
 		vecDynamicObj_(vecDynamicObj),
 		pPlane_(plane),
 		pbombsNumber_(bombsNumber),
 		speed_(speed),
-		eCraterSize_(CraterSize)
+		eCraterSize_(craterSize)
 	{}
 
 	virtual bool Execute() const override {
@@ -125,11 +125,52 @@ public:
 			pBomb->SetDirection(0.3, 1);
 			pBomb->SetSpeed(speed_);
 			pBomb->SetPos(x, y);
-			pBomb->SetWidth(SMALL_CRATER_SIZE);
+			pBomb->SetWidth(eCraterSize_);
 
 			vecDynamicObj_.push_back(pBomb);
 
 			
+			if (pbombsNumber_)
+				(*pbombsNumber_)--;
+
+			return true;
+		}
+		return false;
+	}
+};
+
+
+class CreateSuperBomb : public DropBomb//, public AbstractCommand
+{
+private:
+
+public:
+	CreateSuperBomb(
+		const Plane* plane,
+		std::vector<DynamicObject*>& vecDynamicObj,
+		uint16_t* bombsNumber,
+		double speed = 3,
+		CraterSize craterSize = BIG_CRATER_SIZE
+		)
+		:
+		DropBomb(plane, vecDynamicObj, bombsNumber, speed, craterSize)
+	{}
+
+	virtual bool Execute() const override {
+		if (*pbombsNumber_ > 0)
+		{
+			FileLoggerSingletone::getInstance().WriteToLog(std::string(__FUNCTION__) + " was invoked");
+
+			double x = pPlane_->GetX() + 4;
+			double y = pPlane_->GetY() + 2;
+
+			BombDecorator* pBomb = new BombDecorator;
+			pBomb->SetDirection(0.3, 1);
+			pBomb->SetSpeed(speed_);
+			pBomb->SetPos(x, y);
+			pBomb->SetWidth(eCraterSize_);
+			vecDynamicObj_.push_back(pBomb);
+
 			if (pbombsNumber_)
 				(*pbombsNumber_)--;
 

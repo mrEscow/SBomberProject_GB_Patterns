@@ -26,6 +26,6 @@ public:
 	double GetY() const override { return bomb.GetY(); }
 	double GetX() const override { return bomb.GetX(); }
 	void SetWidth(uint16_t widthN) override { bomb.SetWidth(widthN); }
-	uint16_t GetWidth() const override { bomb.GetWidth(); }
+	uint16_t GetWidth() const override { return bomb.GetWidth(); }
 
 };

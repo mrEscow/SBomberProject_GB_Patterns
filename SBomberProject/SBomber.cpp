@@ -312,6 +312,16 @@ void SBomber::ProcessKBHit()
         //DropBomb();
         break;
 
+    case 'g':
+        if (CommandExecuter(new CreateSuperBomb(FindPlane(), vecDynamicObj, &bombsNumber)))
+            score -= Bomb::BombCost * 2;
+        break;
+
+    case 'G':
+        if (CommandExecuter(new CreateSuperBomb(FindPlane(), vecDynamicObj, &bombsNumber)))
+            score -= Bomb::BombCost * 2;
+        break;
+
     default:
         break;
     }
