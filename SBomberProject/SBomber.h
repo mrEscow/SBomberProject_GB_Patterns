@@ -36,7 +36,11 @@ private:
 
     Ground * FindGround() const;
     Plane * FindPlane() const;
-    LevelGUI * FindLevelGUI() const;
+
+    AbstractLevelGUI* pGUI = new LevelGUI1;
+    AbstractLevelGUI* FindLevelGUI() const;
+
+
     std::vector<DestroyableGroundObject*> FindDestoyableGroundObjects() const;
     std::vector<Bomb*> FindAllBombs() const;
 
