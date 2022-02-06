@@ -4,9 +4,9 @@ bool __fastcall TankAdapter::isInside(double x1, double x2) const{
     return adaptee.isInRange(x1, x2);
 }
 
-inline uint16_t TankAdapter::GetScore() const{
-    return adaptee.GetScore();
-}
+//inline uint16_t TankAdapter::GetScore() const{
+//    return adaptee.GetScore();
+//}
 
 void TankAdapter::Draw() const{
     const_cast<TankAdaptee*>(&adaptee)->Paint();
