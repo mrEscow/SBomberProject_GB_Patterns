@@ -123,19 +123,35 @@ void SBomber::CheckPlaneAndLevelGUI()
 
 void SBomber::CheckBombsAndGround() 
 {
-    vector<Bomb*> vecBombs = FindAllBombs();
+    BombContainer<Bomb*> vecBombs = FindAllBombs();
     Ground* pGround = FindGround();
     const double y = pGround->GetY();
-    for (size_t i = 0; i < vecBombs.size(); i++)
-    {
-        if (vecBombs[i]->GetY() >= y) // Пересечение бомбы с землей
-        {
-            pGround->AddCrater(vecBombs[i]->GetX());
-            CheckDestoyableObjects(vecBombs[i]);
-            DeleteDynamicObj(vecBombs[i]);
+
+    //for (size_t i = 0; i < vecBombs.size(); i++)
+    //{
+    //    if (vecBombs[i]->GetY() >= y) // Пересечение бомбы с землей
+    //    {
+    //        pGround->AddCrater(vecBombs[i]->GetX());
+    //        CheckDestoyableObjects(vecBombs[i]);
+    //        DeleteDynamicObj(vecBombs[i]);
+    //    }
+    //}
+
+    BombIterator<Bomb*, BombContainer<Bomb*>>* it = vecBombs.CreateIterator();
+
+    for (it->First(); !it->IsDone(); it->Next()) {
+        //Bomb* x = *it->Current();
+        //if (x->GetY() >= y) {
+        //    pGround->AddCrater(x->GetX());
+        //    CheckDestoyableObjects(x);
+        //    DeleteDynamicObj(x);
+        //}
+        if ((*it->Current())->GetY() >= y) {
+            pGround->AddCrater((*it->Current())->GetX());
+            CheckDestoyableObjects((*it->Current()));
+            DeleteDynamicObj((*it->Current()));
         }
     }
-
 }
 
 void SBomber::CheckDestoyableObjects(Bomb * pBomb)
@@ -222,16 +238,33 @@ Ground* SBomber::FindGround() const
     return nullptr;
 }
 
-vector<Bomb*> SBomber::FindAllBombs() const
+//vector<Bomb*> SBomber::FindAllBombs() const
+//{
+//    vector<Bomb*> vecBombs;
+//
+//    for (size_t i = 0; i < vecDynamicObj.size(); i++)
+//    {
+//        Bomb* pBomb = dynamic_cast<Bomb*>(vecDynamicObj[i]);
+//        if (pBomb != nullptr)
+//        {
+//            vecBombs.push_back(pBomb);
+//        }
+//    }
+//
+//    return vecBombs;
+//}
+
+BombContainer<Bomb*> SBomber::FindAllBombs() const
 {
-    vector<Bomb*> vecBombs;
+    BombContainer<Bomb*> vecBombs;
 
     for (size_t i = 0; i < vecDynamicObj.size(); i++)
     {
         Bomb* pBomb = dynamic_cast<Bomb*>(vecDynamicObj[i]);
         if (pBomb != nullptr)
         {
-            vecBombs.push_back(pBomb);
+            vecBombs.Add(pBomb);
+            //vecBombs.push_back(pBomb);
         }
     }
 

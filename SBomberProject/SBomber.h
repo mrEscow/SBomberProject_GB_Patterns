@@ -8,6 +8,8 @@
 #include "Ground.h"
 #include "Tank.h"
 
+#include "BombIterator.h"
+
 class SBomber
 {
 public:
@@ -38,7 +40,9 @@ private:
     Plane * FindPlane() const;
     LevelGUI * FindLevelGUI() const;
     std::vector<DestroyableGroundObject*> FindDestoyableGroundObjects() const;
-    std::vector<Bomb*> FindAllBombs() const;
+
+    BombContainer<Bomb*> FindAllBombs() const;
+    //std::vector<Bomb*> FindAllBombs() const;
 
     void DropBomb();
 
