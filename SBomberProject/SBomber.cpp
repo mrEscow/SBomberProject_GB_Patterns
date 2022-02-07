@@ -42,11 +42,17 @@ SBomber::SBomber()
     pGUI->SetFinishX(offset + width - 4);
     vecStaticObj.push_back(pGUI);
 
+
+
     Ground* pGr = new Ground;
     const uint16_t groundY = maxY - 5;
     pGr->SetPos(offset + 1, groundY);
     pGr->SetWidth(width - 2);
     vecStaticObj.push_back(pGr);
+
+
+
+    pTreeCreator = new (std::nothrow) TreeCreatorA;
 
     Tank* pTank = new Tank;
     pTank->SetWidth(13);
@@ -62,6 +68,8 @@ SBomber::SBomber()
     pHouse->SetWidth(13);
     pHouse->SetPos(80, groundY - 1);
     vecStaticObj.push_back(pHouse);
+
+
 
     /*
     Bomb* pBomb = new Bomb;
@@ -112,6 +120,11 @@ void SBomber::CheckObjects()
     CheckPlaneAndLevelGUI();
     CheckBombsAndGround();
 };
+//-------------------------------------------------------------------SpawnTree();
+void SBomber::SpawnTree()
+{
+    vecStaticObj.push_back(pTreeCreator->Create(rand() % 100 + 10, 0));
+}
 
 void SBomber::CheckPlaneAndLevelGUI()
 {
@@ -279,6 +292,28 @@ void SBomber::ProcessKBHit()
 
     switch (c) {
 
+        //------------------------------------------------------------------
+    case 49: // 1
+        delete pTreeCreator;
+        pTreeCreator = new (std::nothrow) TreeCreatorA;
+        break;
+    case 50: // 2
+        delete pTreeCreator;
+        pTreeCreator = new (std::nothrow) TreeCreatorB;
+    case 51: // 3
+        delete pTreeCreator;
+        pTreeCreator = new (std::nothrow) TreeCreatorC;
+
+        //------------------------------------------------------------------
+        break;
+    case '=':
+        SpawnTree();
+        break;
+    case '+':
+        SpawnTree();
+        break;
+
+        //------------------------------------------------------------------
     case 27: // esc
         exitFlag = true;
         break;

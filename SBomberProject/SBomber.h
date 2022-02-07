@@ -7,6 +7,7 @@
 #include "Bomb.h"
 #include "Ground.h"
 #include "Tank.h"
+#include "Trees.h"
 
 class SBomber
 {
@@ -26,6 +27,9 @@ public:
     void CheckObjects();
 
 private:
+
+    TreeCreator* pTreeCreator;
+    void SpawnTree();
 
     void CheckPlaneAndLevelGUI();
     void CheckBombsAndGround();
