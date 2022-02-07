@@ -300,12 +300,13 @@ void SBomber::ProcessKBHit()
     case 50: // 2
         delete pTreeCreator;
         pTreeCreator = new (std::nothrow) TreeCreatorB;
+        break;
     case 51: // 3
         delete pTreeCreator;
         pTreeCreator = new (std::nothrow) TreeCreatorC;
+        break;
 
         //------------------------------------------------------------------
-        break;
     case '=':
         SpawnTree();
         break;

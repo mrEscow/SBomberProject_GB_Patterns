@@ -7,34 +7,57 @@
 using namespace std;
 //using namespace MyTools;
 
+bool __fastcall Tree::isInside(double x1, double x2) const
+{
+	const double XBeg = x + 2;
+	const double XEnd = x + width - 1;
 
+	if (x1 < XBeg && x2 > XEnd)
+	{
+		return true;
+	}
+
+	if (x1 > XBeg && x1 < XEnd)
+	{
+		return true;
+	}
+
+	if (x2 > XBeg && x2 < XEnd)
+	{
+		return true;
+	}
+
+	return false;
+}
 
 DestroyableGroundObject* TreeCreatorA::Create(double x, double y)
 {
-	TreeA* Tree = new TreeA;
+	Tree* tree = new TreeA;
+	tree->SetWidth(15);
+	const uint16_t maxY = MyTools::GetMaxY();
 	y += MyTools::GetMaxY() - 6;
-	Tree->SetPos(x, y);
-    return  Tree;
+	tree->SetPos(x, y);
+	return  tree;
 }
 
 DestroyableGroundObject* TreeCreatorB::Create(double x, double y)
 {
-	TreeB* Tree = new TreeB;
-	Tree->SetWidth(15);
+	Tree* tree = new TreeB;
+	tree->SetWidth(15);
 	const uint16_t maxY = MyTools::GetMaxY();
 	y += MyTools::GetMaxY() - 6;
-	Tree->SetPos(x,y);
-	return  Tree;
+	tree->SetPos(x, y);
+	return  tree;
 }
 
 DestroyableGroundObject* TreeCreatorC::Create(double x, double y)
 {
-	TreeC* Tree = new TreeC;
-	Tree->SetWidth(15);
+	Tree* tree = new TreeC;
+	tree->SetWidth(15);
 	const uint16_t maxY = MyTools::GetMaxY();
 	y += MyTools::GetMaxY() - 6;
-	Tree->SetPos(x, y);
-	return  Tree;
+	tree->SetPos(x, y);
+	return  tree;
 }
 
 void TreeA::Draw() const
@@ -92,69 +115,4 @@ void TreeC::Draw() const
 	cout << "   #";
 }
 
-bool __fastcall TreeA::isInside(double x1, double x2) const
-{
-	const double XBeg = x + 2;
-	const double XEnd = x + width - 1;
 
-	if (x1 < XBeg && x2 > XEnd)
-	{
-		return true;
-	}
-
-	if (x1 > XBeg && x1 < XEnd)
-	{
-		return true;
-	}
-
-	if (x2 > XBeg && x2 < XEnd)
-	{
-		return true;
-	}
-
-	return false;
-}
-bool __fastcall TreeB::isInside(double x1, double x2) const
-{
-	const double XBeg = x + 2;
-	const double XEnd = x + width - 1;
-
-	if (x1 < XBeg && x2 > XEnd)
-	{
-		return true;
-	}
-
-	if (x1 > XBeg && x1 < XEnd)
-	{
-		return true;
-	}
-
-	if (x2 > XBeg && x2 < XEnd)
-	{
-		return true;
-	}
-
-	return false;
-}
-bool __fastcall TreeC::isInside(double x1, double x2) const
-{
-	const double XBeg = x + 2;
-	const double XEnd = x + width - 1;
-
-	if (x1 < XBeg && x2 > XEnd)
-	{
-		return true;
-	}
-
-	if (x1 > XBeg && x1 < XEnd)
-	{
-		return true;
-	}
-
-	if (x2 > XBeg && x2 < XEnd)
-	{
-		return true;
-	}
-
-	return false;
-}
