@@ -50,9 +50,18 @@ SBomber::SBomber()
     pGr->SetWidth(width - 2);
     vecStaticObj.push_back(pGr);
 
-
-
     pTreeCreator = new (std::nothrow) TreeCreatorA;
+
+    HouseBuilderA* builder = new HouseBuilderA();
+
+    builder->ProducePartC();
+    House* pHouse1 = builder->GetProduct();
+    pHouse1->SetPos(80, groundY - 12);
+    vecStaticObj.push_back(pHouse1);
+    builder->ProducePartA();
+    pHouse1 = builder->GetProduct();
+    pHouse1->SetPos(100, groundY - 7);
+    vecStaticObj.push_back(pHouse1);
 
     Tank* pTank = new Tank;
     pTank->SetWidth(13);
@@ -64,10 +73,10 @@ SBomber::SBomber()
     pTank->SetPos(50, groundY - 1);
     vecStaticObj.push_back(pTank);
 
-    House * pHouse = new House;
-    pHouse->SetWidth(13);
-    pHouse->SetPos(80, groundY - 1);
-    vecStaticObj.push_back(pHouse);
+    //House * pHouse = new House;
+    //pHouse->SetWidth(13);
+    //pHouse->SetPos(80, groundY - 1);
+    //vecStaticObj.push_back(pHouse);
 
 
 

@@ -8,6 +8,7 @@
 #include "Ground.h"
 #include "Tank.h"
 #include "Trees.h"
+#include "House.h"
 
 class SBomber
 {
@@ -30,6 +31,8 @@ private:
 
     TreeCreator* pTreeCreator;
     void SpawnTree();
+
+    HouseDirector* pHouseDirector_;
 
     void CheckPlaneAndLevelGUI();
     void CheckBombsAndGround();
