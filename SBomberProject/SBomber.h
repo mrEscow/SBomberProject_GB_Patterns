@@ -8,6 +8,10 @@
 #include "Ground.h"
 #include "Tank.h"
 
+/*
+    class SBomber is the Facade 
+*/
+
 class SBomber
 {
 public:
