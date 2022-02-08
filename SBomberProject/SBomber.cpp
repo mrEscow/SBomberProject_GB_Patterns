@@ -2,8 +2,8 @@
 #include <conio.h>
 #include <windows.h>
 
-#include "MyTools.h"
 #include "SBomber.h"
+#include "MyTools.h"
 #include "Bomb.h"
 #include "Ground.h"
 #include "Tank.h"
@@ -30,9 +30,7 @@ SBomber::SBomber()
     p->SetPos(5, 10);
     vecDynamicObj.push_back(p);
 
-
-    //LevelGUI* pGUI = new LevelGUI;
-    
+    pGUI = new LevelGUI1;
     pGUI->SetParam(passedTime, fps, bombsNumber, score);
     const uint16_t maxX = GetMaxX();
     const uint16_t maxY = GetMaxY(); 
@@ -280,44 +278,6 @@ void SBomber::ProcessKBHit()
     WriteToLog(string(__FUNCTION__) + " was invoked. key = ", c);
 
     switch (c) {
-
-    case 49: // LevelUI1
-        DeleteStaticObj(pGUI);
-        delete pGUI;
-        pGUI = new LevelGUI1;
-        pGUI->SetParam(passedTime, fps, bombsNumber, score);
-        {
-            const uint16_t maxX = GetMaxX();
-            const uint16_t maxY = GetMaxY();
-            const uint16_t offset = 3;
-            const uint16_t width = maxX - 7;
-        
-            pGUI->SetPos(offset, offset);
-            pGUI->SetWidth(width);
-            pGUI->SetHeight(maxY - 4);
-            pGUI->SetFinishX(offset + width - 4);
-        }
-        vecStaticObj.push_back(pGUI);
-        break;
-
-    case 50: // LevelUI2
-        DeleteStaticObj(pGUI);
-        delete pGUI;
-        pGUI = new LevelGUI2;
-        pGUI->SetParam(passedTime, fps, bombsNumber, score);
-        {
-            const uint16_t maxX = GetMaxX();
-            const uint16_t maxY = GetMaxY();
-            const uint16_t offset = 3;
-            const uint16_t width = maxX - 7;
-
-            pGUI->SetPos(offset, offset);
-            pGUI->SetWidth(width);
-            pGUI->SetHeight(maxY - 4);
-            pGUI->SetFinishX(offset + width - 4);
-        }
-        vecStaticObj.push_back(pGUI);
-        break;
 
     case 27: // esc
         exitFlag = true;
