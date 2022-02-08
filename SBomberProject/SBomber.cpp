@@ -279,6 +279,40 @@ void SBomber::ProcessKBHit()
 
     switch (c) {
 
+    case 49: // 1
+        {
+            DeleteStaticObj(pGUI);
+            pGUI = new LevelGUI1;
+            pGUI->SetParam(passedTime, fps, bombsNumber, score);
+            const uint16_t maxX = GetMaxX();
+            const uint16_t maxY = GetMaxY();
+            const uint16_t offset = 3;
+            const uint16_t width = maxX - 7;
+            pGUI->SetPos(offset, offset);
+            pGUI->SetWidth(width);
+            pGUI->SetHeight(maxY - 4);
+            pGUI->SetFinishX(offset + width - 4);
+            vecStaticObj.push_back(pGUI);
+            //delete pGUI;
+        }
+        break;
+    case 50: // 2
+        {
+            DeleteStaticObj(pGUI);
+            pGUI = new LevelGUI2;
+            pGUI->SetParam(passedTime, fps, bombsNumber, score);
+            const uint16_t maxX = GetMaxX();
+            const uint16_t maxY = GetMaxY();
+            const uint16_t offset = 3;
+            const uint16_t width = maxX - 7;
+            pGUI->SetPos(offset, offset);
+            pGUI->SetWidth(width);
+            pGUI->SetHeight(maxY - 4);
+            pGUI->SetFinishX(offset + width - 4);
+            vecStaticObj.push_back(pGUI);
+            //delete pGUI;
+        }
+        break;
     case 27: // esc
         exitFlag = true;
         break;
@@ -320,7 +354,8 @@ void SBomber::DrawFrame()
     {
         if (vecStaticObj[i] != nullptr)
         {
-            vecStaticObj[i]->Draw();
+            if(vecStaticObj[i])
+                vecStaticObj[i]->Draw();
         }
     }
 
