@@ -9,6 +9,7 @@
 #include "Tank.h"
 #include "Trees.h"
 #include "House.h"
+#include "CollisionDetector.h"
 
 class SBomber
 {
@@ -34,9 +35,11 @@ private:
 
     HouseDirector* pHouseDirector_;
 
-    void CheckPlaneAndLevelGUI();
-    void CheckBombsAndGround();
-    void __fastcall CheckDestoyableObjects(Bomb* pBomb);
+    ICollisionDetector* pCollisionDetector;
+
+    //void CheckPlaneAndLevelGUI();
+    //void CheckBombsAndGround();
+    //void __fastcall CheckDestoyableObjects(Bomb* pBomb);
 
     void __fastcall DeleteDynamicObj(DynamicObject * pBomb);
     void __fastcall DeleteStaticObj(GameObject* pObj);
