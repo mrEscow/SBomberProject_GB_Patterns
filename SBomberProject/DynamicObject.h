@@ -21,8 +21,8 @@ public:
     
     virtual void Move(uint16_t time) { x += xDirction * speed * time * 0.001; y += yDirection * speed * time * 0.001; };
 
-    virtual double GetSpeed() { return speed; };
-    virtual Direction GetDirection() {
+    virtual double GetSpeed() const { return speed; };
+    virtual Direction GetDirection() const {
         Direction dir;
         dir.xDir = xDirction;
         dir.yDir = yDirection;
