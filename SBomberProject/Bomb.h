@@ -10,6 +10,11 @@ public:
 
 	void Draw() const override;
 
+	void __fastcall Accept(const Visitor& v)
+	{
+		v.log(*this);
+	}
+
 private:
 
 };

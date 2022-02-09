@@ -9,6 +9,12 @@ public:
 
     inline void ChangePlaneY(double dy) { yDirection += dy; }
 
+
+    void __fastcall Accept(const Visitor& v)
+    {
+        v.log(*this);
+    }
+
 private:
 
 };
