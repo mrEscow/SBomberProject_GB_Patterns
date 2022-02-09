@@ -4,6 +4,7 @@
 
 #include "GameObject.h"
 
+#include "Visitor.h"
 struct Direction
 {
     double xDir;
@@ -21,6 +22,7 @@ public:
     
     virtual void Move(uint16_t time) { x += xDirction * speed * time * 0.001; y += yDirection * speed * time * 0.001; };
 
+    virtual void __fastcall Accept(IVisitor* v) = 0;
     virtual double GetSpeed() const { return speed; };
     virtual Direction GetDirection() const {
         Direction dir;
