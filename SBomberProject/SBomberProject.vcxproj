@@ -144,6 +144,7 @@
     <ClCompile Include="House.cpp" />
     <ClCompile Include="LevelGUI.cpp" />
     <ClCompile Include="MyTools.cpp" />
+    <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="SBomber.cpp" />
     <ClCompile Include="SBomberProject.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="House.h" />
     <ClInclude Include="LevelGUI.h" />
     <ClInclude Include="MyTools.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="SBomber.h" />
     <ClInclude Include="Tank.h" />
