@@ -1,4 +1,8 @@
 #include "Visitor.h"
+
+#include "Bomb.h"
+#include "Plane.h"
+
 #include "MyTools.h"
 using namespace MyTools;
 
@@ -8,7 +12,6 @@ void LogVisitor::log(const Bomb* bomb)
 		"BombSpeed: ",
 		bomb->GetSpeed()
 	);
-
 	MyTools::WriteToLog(
 		"BombDirection: ",
 		bomb->GetDirection().xDir,

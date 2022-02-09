@@ -1,6 +1,8 @@
 #pragma once
-#include "Bomb.h"
-#include "Plane.h"
+
+class Bomb;
+class Plane;
+
 class IVisitor
 {
 public:

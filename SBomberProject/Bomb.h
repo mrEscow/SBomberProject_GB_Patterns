@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DynamicObject.h"
-
+#include "Visitor.h"
 class Bomb : public DynamicObject
 {
 public:
@@ -12,7 +12,7 @@ public:
 
 	void __fastcall Accept(IVisitor* v)
 	{
-		v->log(*this);
+		v->log(this);
 	}
 
 private:

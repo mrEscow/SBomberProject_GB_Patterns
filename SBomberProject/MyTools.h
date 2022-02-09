@@ -50,6 +50,8 @@ namespace MyTools {
 
 	void __fastcall WriteToLog(const std::string& str, double d);
 
+    void __fastcall WriteToLog(const std::string& str, double d0, double d1);
+
 	//=============================================================================================
 
 };
